@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEE 8:17 | Premium Female Underwear</title>
+    <style>
+        :root {
+            --primary-blue: #0ea5e9;
+            --emerald-green: #10b981;
+            --deep-navy: #0f172a;
+            --soft-bg: #f0fdfa;
+            --white: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--soft-bg);
+            color: var(--deep-navy);
+            overflow-x: hidden;
+        }
+
+        /* Sticky Header with Dynamic Transparency */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 1rem 2rem;
+            background-color: rgba(240, 253, 250, 0.75); 
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--emerald-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: var(--transition);
+        }
+
+        header.scrolled .logo {
+            opacity: 0.8; 
+        }
+
+        .cart-status {
+            background: linear-gradient(135deg, var(--emerald-green), var(--primary-blue));
+            color: var(--white);
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Hero Showcase */
+        .hero {
+            padding: 8rem 2rem 4rem 2rem;
+            text-align: center;
+            background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.15), transparent),
+                        radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.15), transparent);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--deep-navy);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #475569;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Product Gallery Grid */
+        .shop-container {
+            max-width: 1200px;
+            margin: 0 auto 6rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.03);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 35px rgba(14, 165, 233, 0.12);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            background-color: #e2e8f0;
+            position: relative;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1); 
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            z-index: 2;
+        }
+
+        .product-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--emerald-green);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--deep-navy);
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* Size Selector */
+        .size-selector {
+            margin-bottom: 1.5rem;
+        }
+
+        .size-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .size-options {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .size-btn {
+            border: 2px solid #e2e8f0;
+            background-color: var(--white);
+            color: var(--deep-navy);
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .size-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .size-btn.selected {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-add-to-cart {
+            background: linear-gradient(135deg, var(--deep-navy), #1e293b);
+            color: var(--white);
+            border: none;
+            padding: 0.9rem;
+            border-radius: 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+
+        .product-card:hover .btn-add-to-cart {
+            background: linear-gradient(135deg, var(--primary-blue), var(--emerald-green));
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #25d366;
+            color: white;
+            padding: 1.2rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .whatsapp-cta:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .whatsapp-cta { bottom: 1.5rem; right: 1rem; left: 1rem; text-align: center; justify-content: center; }
+            .shop-container { margin-bottom: 8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="logo">BEE 8:17</div>
+        <div class="cart-status">Bag (<span id="cart-count">0</span>)</div>
+    </header>
+
+    <section class="hero">
+        <h1>Intimate Comfort Redefined</h1>
+        <p>Premium everyday essentials designed to fit your shape flawlessly. Select your size, add to your bag, and checkout instantly over WhatsApp.</p>
+    </section>
+
+    <main class="shop-container">
+        <div class="grid">
+            <!-- Item 1: Bras -->
+            <div class="product-card" id="prod-1">
+                <div class="image-container">
+                    <img src="images/bra.jpg" alt="Premium Comfort Bra" class="product-image">
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Bras</span>
+                    <h3 class="product-title">Seamless Contour Bra</h3>
+                    <div class="product-price">₦12,500</div>
+                    
+                    <div class="size-selector">
+                        <span class="size-label">Select Size:</span>
+                        <div class="size-options">
+                            <button class="size-btn" onclick="selectSize(this, 'prod-1')">S</button>
+                            <button class="size-btn" onclick="selectSize(this, 'prod-1')">M</button>
+                            <button class="size-btn" onclick="selectSize(this, 'prod-1')">L</button>
+                            <button class="size-btn" onclick="selectSize(this, 'prod-1')">XL</button>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-add-to-cart" onclick="addToCart('prod-1', 'Seamless Contour Bra')">Add to Bag</button>
+                </div>
+            </div>
+
+            <!-- Item 2: Shorts -->
+            <div class="product-card" id="prod-2">
+                <div class="image-container">
+                    <img src="images/shorts.jpg" alt="Boy Shorts" class="product-image">
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Shorts</span>
+                    <h3 class="product-title">Ribbed Lounge Boy Shorts</h3>
+                    <div class="product-price">₦6,000</div>
+                    
+                    <div class="size-selector">
+                        <span class="size-label">Select Size:</span>
+                        <div class="size-options">
+                            <button class="size-btn" onclick="selectSize(this, 'prod-2')">S</button>
+                            <button class="size-btn" onclick="selectSize(this, 'prod-2')">M</button>
+                            <button class="size-btn" onclick="selectSize(this, 'prod-2')">L</button>
+                            <button class="size-btn" onclick="selectSize(this, 'prod-2')">XL</button>
+                        </div>
+                    </div>
+
+                    <button class="btn-add-to-cart" onclick="addToCart('prod-2', 'Ribbed Lounge Boy Shorts')">Add to Bag</button>
+                </div>
+            </div>
+
+            <!-- Item 3: Full Underwear -->
+            <div class="product-card" id="prod-3">
+                <div class="image-container">
+                    <img src="images/brief.jpg" alt="Full Briefs" class="product-image">
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Full Briefs</span>
+                    <h3 class="product-title">Classic High-Waist Brief</h3>
+                    <div class="product-price">₦5,500</div>
+                    
+                    <div class="size-selector">
+                        <span class="size-label">Select Size:</span>
+                        <div class="size-options">
+                            <button class="size-btn" onclick="selectSize(this, 'prod-3')">S</button>
+                            <button class="size-btn" onclick="selectSize(this, 'prod-3')">M</button>
+                            <button class="size-btn" onclick="selectSize(this, 'prod-3')">L</button>
+                            <button class="size-btn" onclick="selectSize(this, 'prod-3')">XL</button>
+                        </div>
+                    </div>
+
+                    <button class="btn-add-to-cart" onclick="addToCart('prod-3', 'Classic High-Waist Brief')">Add to Bag</button>
+                </div>
+            </div>
+
+            <!-- Item 4: Thongs & G-Strings -->
+            <div class="product-card" id="prod-4">
+                <div class="image-container">
+                    <img src="images/thong.jpg" alt="Lace Thong" class="product-image">
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Thongs & G-Strings</span>
+                    <h3 class="product-title">Lace Minimalist Thong</h3>
+                    <div class="product-price">₦4,500</div>
+                    
+                    <div class="size-selector">
+                        <span class="size-label">Select Size:</span>
+                        <div class="size-options">
+                            <button class="size-btn" onclick="selectSize(this, 'prod-4')">S</button>
+                            <button class="size-btn" onclick="selectSize(this, 'prod-4')">M</button>
+                            <button class="size-btn" onclick="selectSize(this, 'prod-4')">L</button>
+                            <button class="size-btn" onclick="selectSize(this, 'prod-4')">XL</button>
+                        </div>
+                    </div>
+
+                    <button class="btn-add-to-cart" onclick="addToCart('prod-4', 'Lace Minimalist Thong')">Add to Bag</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- WhatsApp Order Link -->
+    <a href="#" id="whatsapp-order-btn" class="whatsapp-cta" target="_blank" onclick="sendOrder(event)">
+        Send Order to WhatsApp →
+    </a>
+
+    <script>
+        // Track Header Transparency on Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Store selected sizes for each card element ID
+        let selectedSizes = {};
+        let cart = [];
+
+        function selectSize(buttonElement, cardId) {
+            const container = document.getElementById(cardId);
+            const buttons = container.querySelectorAll('.size-btn');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            
+            buttonElement.classList.add('selected');
+            selectedSizes[cardId] = buttonElement.innerText;
+        }
+
+        function addToCart(cardId, itemName) {
+            const size = selectedSizes[cardId];
+            
+            if (!size) {
+                alert("Please select a size for this item before adding it to your bag!");
+                return;
+            }
+
+            cart.push(`${itemName} (Size: ${size})`);
+            document.getElementById('cart-count').innerText = cart.length;
+            alert(`Added ${itemName} in Size ${size} to your bag.`);
+        }
+
+        function sendOrder(event) {
+            // Replace with your real WhatsApp number (include country code, no + symbols)
+            const phoneNumber = "2349076193470"; 
+
+            if (cart.length === 0) {
+                event.preventDefault();
+                alert("Your shopping bag is empty!");
+                return;
+            }
+
+            let message = "Hello BEE 8:17! I would like to purchase these underwear items:\n\n";
+            cart.forEach((item, idx) => {
+                message += `${idx + 1}. ${item}\n`;
+            });
+            message += "\nAre these variants available in stock?";
+
+            const encodedMessage = encodeURIComponent(message);
+            document.getElementById('whatsapp-order-btn').href = `wa.me{phoneNumber}?text=${encodedMessage}`;
+        }
+    </script>
+</body>
+</html>
